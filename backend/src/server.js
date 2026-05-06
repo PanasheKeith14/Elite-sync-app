@@ -9,7 +9,12 @@ const bookingRoutes  = require('./routes/bookings');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// Updated CORS configuration to allow your specific Vercel URL
+app.use(cors({
+  origin: ["https://elite-sync-app.vercel.app", "http://localhost:5173"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.use('/api/auth',     authRoutes);
@@ -22,5 +27,5 @@ app.get('/api/health', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Health: http://localhost:${PORT}/api/health`);
+  console.log(`Health Check: https://elitesync-backend.onrender.com/api/health`);
 });
