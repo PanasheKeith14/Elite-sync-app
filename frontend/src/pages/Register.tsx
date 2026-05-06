@@ -13,44 +13,20 @@ const Register = () => {
     e.preventDefault();
     try {
       await API.post('/auth/register', formData);
-      alert('Account created successfully! You can now sign in.');
+      alert('Account created! Now you can Sign In.');
     } catch (err: any) {
-      alert(err.response?.data?.message || 'Server error - checking if backend is awake...');
+      alert(err.response?.data?.message || 'Server Error - check if backend is awake');
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] p-4">
-      <h1 className="text-4xl font-bold mb-6 text-[var(--text-h)]">Create Account</h1>
-      <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-4">
-        <input 
-          type="text" placeholder="Full Name" required
-          className="p-3 border border-[var(--border)] rounded bg-transparent"
-          onChange={(e) => setFormData({...formData, name: e.target.value})}
-        />
-        <input 
-          type="email" placeholder="Email" required
-          className="p-3 border border-[var(--border)] rounded bg-transparent"
-          onChange={(e) => setFormData({...formData, email: e.target.value})}
-        />
-        <input 
-          type="password" placeholder="Password" required
-          className="p-3 border border-[var(--border)] rounded bg-transparent"
-          onChange={(e) => setFormData({...formData, password: e.target.value})}
-        />
-        <select 
-          className="p-3 border border-[var(--border)] rounded bg-transparent"
-          onChange={(e) => setFormData({...formData, role: e.target.value})}
-        >
-          <option value="client">I am a Client</option>
-          <option value="provider">I am a Service Provider</option>
-        </select>
-        <button 
-          type="submit" 
-          className="bg-[var(--accent)] text-white p-3 rounded font-bold hover:opacity-90 transition-opacity"
-        >
-          Create Account
-        </button>
+    <div className="flex flex-col items-center justify-center p-10">
+      <h1 className="text-3xl font-bold mb-6">Create Account</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-80">
+        <input className="p-2 border rounded" type="text" placeholder="Full Name" onChange={(e) => setFormData({...formData, name: e.target.value})} required />
+        <input className="p-2 border rounded" type="email" placeholder="Email" onChange={(e) => setFormData({...formData, email: e.target.value})} required />
+        <input className="p-2 border rounded" type="password" placeholder="Password" onChange={(e) => setFormData({...formData, password: e.target.value})} required />
+        <button className="bg-[#aa3bff] text-white p-2 rounded font-bold" type="submit">Create Account</button>
       </form>
     </div>
   );
