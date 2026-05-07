@@ -3,6 +3,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import BookingPage from './pages/BookingPage'
+import BusinessDashboard from './pages/BusinessDashboard'
 
 export default function App() {
   const [page, setPage] = useState('login')
@@ -13,9 +14,10 @@ export default function App() {
     const savedToken = localStorage.getItem('token')
     const savedUser = localStorage.getItem('user')
     if (savedToken && savedUser) {
+      const u = JSON.parse(savedUser)
       setToken(savedToken)
-      setUser(JSON.parse(savedUser))
-      setPage('dashboard')
+      setUser(u)
+      setPage(u.role === 'BUSINESS_OWNER' ? 'business' : 'dashboard')
     }
   }, [])
 
@@ -24,7 +26,7 @@ export default function App() {
     setToken(userToken)
     localStorage.setItem('token', userToken)
     localStorage.setItem('user', JSON.stringify(userData))
-    setPage('dashboard')
+    setPage(userData.role === 'BUSINESS_OWNER' ? 'business' : 'dashboard')
   }
 
   const handleLogout = () => {
@@ -37,6 +39,7 @@ export default function App() {
 
   if (page === 'login') return <Login onLogin={handleLogin} onRegister={() => setPage('register')} />
   if (page === 'register') return <Register onLogin={handleLogin} onBack={() => setPage('login')} />
+  if (page === 'business') return <BusinessDashboard user={user} token={token} onLogout={handleLogout} />
   if (page === 'booking') return <BookingPage token={token} user={user} onBack={() => setPage('dashboard')} />
   return <Dashboard user={user} token={token} onLogout={handleLogout} onBook={() => setPage('booking')} />
 }
