@@ -1,7 +1,7 @@
 # EliteSync — Multi-Tenant Booking & SaaS Platform
 
 **Live demo:** [elite-sync-app.vercel.app](https://elite-sync-app.vercel.app)
-**API docs:** [link to Swagger/OpenAPI docs] <!-- paste your Swagger URL here -->
+
 
 A production-deployed, multi-tenant booking and resource management SaaS platform built as a team project for a 6th-semester university course. I served as **database and API contributor**.
 
@@ -35,8 +35,9 @@ EliteSync lets multiple independent businesses manage bookings, staff, and servi
 
 ## Screenshots
 
-<!-- Add 2-3 screenshots here: dashboard, calendar view, booking flow -->
-<!-- ![Dashboard](./screenshots/dashboard.png) -->
+<img width="938" height="476" alt="image" src="https://github.com/user-attachments/assets/a6e777e9-0174-44d0-93de-348615651533" />
+<img width="745" height="417" alt="image" src="https://github.com/user-attachments/assets/58ec6a27-5e95-4d42-8409-ee25d5690a9b" />
+<img width="950" height="464" alt="image" src="https://github.com/user-attachments/assets/a70e3c2e-87c9-48b3-ab99-a0b609911f80" />
 
 ## Running locally
 
